@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-mongo-express
+  namespace: mongo-db
+spec:
+  podSelector:
+    matchLabels:
+      app: mongodb  # Selects MongoDB pods
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: mongo-express  # Allows only mongo-express namespace
+    ports:
+    - protocol: TCP
+      port: 27017  
