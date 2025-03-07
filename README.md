@@ -93,13 +93,30 @@ The service is not reachable outside the cluster.
 
 A Namespace is a way to logically isolate resources within a Kubernetes cluster. It helps organize different environments (e.g., dev, staging, production) or separate teams within the same cluster.
 
+
+Use Cases:
+Multi-tenancy: Different teams can work in separate namespaces without interfering with each other.
+Environment Separation: Create different namespaces for dev, staging, and production workloads.
+Resource Management: Limits can be set per namespace using ResourceQuotas.
+
 2️⃣ ConfigMap
 
 A ConfigMap is a Kubernetes object used to store non-sensitive configuration data as key-value pairs. It helps decouple configuration from application code.
 
+
+Use Cases:
+Store environment variables, command-line arguments, or configuration files.
+Share configuration across multiple pods without modifying images.
+Centralize settings for easier updates.
+
 3️⃣ Secret
 
 A Secret is similar to a ConfigMap but is used to store sensitive data like passwords, API keys, and TLS certificates.
+
+
+Use Cases:
+Securely store credentials instead of hardcoding them.
+Pass sensitive data to containers as environment variables or mounted volumes.
 
 
 4️⃣ Network Policy
@@ -107,9 +124,17 @@ A Secret is similar to a ConfigMap but is used to store sensitive data like pass
 A NetworkPolicy controls how pods communicate with each other and external networks. By default, Kubernetes allows all traffic between pods, but a NetworkPolicy can restrict this.
 
 
+Use Cases:
+Isolating workloads: Prevent unauthorized communication between services.
+Restricting external access: Allow only specific sources to connect to pods.
+Enhancing security: Limit access to critical components like databases.
+
+
+
 5️⃣ Taint and Toleration
 
 Taints and tolerations control pod placement by preventing or allowing specific nodes to run certain workloads.
+
 
 Use Cases:
 Prevent non-critical workloads from running on critical nodes.
